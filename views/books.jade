@@ -4,7 +4,8 @@ block content
   for book_entries in titles
     table
       tr
-        td #{book_entries.title}
+        td 
+          a(href='/books/#{book_entries.id}') #{book_entries.title}
       tr
         td #{book_entries.genre}
       tr
