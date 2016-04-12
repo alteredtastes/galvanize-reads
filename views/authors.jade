@@ -1,7 +1,12 @@
 extends layout
 
 block content
-  for authorname in author
+  for author_entry in author
       table
         tr
-          td #{authorname.first} #{authorname.last}
+          td #{author_entry.first} #{author_entry.last}
+        tr
+          td #{author_entry.bio}
+        tr
+          td #{author_entry.url}
+          

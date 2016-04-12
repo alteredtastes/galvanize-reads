@@ -9,8 +9,4 @@ router.get('/', function(req, res, next) {
   });
 })
 
-router.get('/:index', function(req, res, next) {
-  return knex('books').select('title', 'genre', 'description', 'url')
-})
-
 module.exports = router;

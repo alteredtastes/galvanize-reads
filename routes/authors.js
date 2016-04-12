@@ -4,9 +4,9 @@ var router = express.Router();
 const knex = require('../db/knex');
 
 router.get('/', function(req, res, next) {
-  return knex('authors').select('first', 'last').then(function(authorname) {
+  return knex('authors').select('first', 'last', 'bio', 'url').then(function(author_entry) {
     return res.render('authors', {
-      author: authorname
+      author: author_entry
     })
   })
 })
