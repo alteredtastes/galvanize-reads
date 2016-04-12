@@ -4,7 +4,8 @@ block content
   for author_entries in authors
       table
         tr
-          td #{author_entries.first} #{author_entries.last}
+          td
+           a(href='/authors/#{author_entries.id}/') #{author_entries.first} #{author_entries.last}
         tr
           td #{author_entries.bio}
         tr
