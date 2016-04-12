@@ -1,5 +1,7 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{authors}
+  for authorname in author
+      table
+        tr
+          td #{authorname.first} #{authorname.last}

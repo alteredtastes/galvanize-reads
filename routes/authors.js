@@ -3,12 +3,12 @@ var router = express.Router();
 
 const knex = require('../db/knex');
 
-function books() {
-  return knex('Authors');
-}
-
 router.get('/', function(req, res, next) {
-  res.render('authors', {authors: 'author!'});
+  return knex('authors').select('first', 'last').then(function(authorname) {
+    return res.render('authors', {
+      author: authorname
+    })
+  })
 })
 
 module.exports = router;
