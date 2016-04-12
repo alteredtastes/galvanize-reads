@@ -1,7 +1,10 @@
 extends layout
 
 block content
-  for booknames in title
+  for book_entries in title
     table
       tr
-        td #{booknames.title}
+        td #{book_entries.title}
+        td #{book_entries.genre}
+        td #{book_entries.description}
+        td #{book_entries.url}
