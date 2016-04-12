@@ -11,4 +11,5 @@ block content
       tr
         td #{book_entries.description}
       tr
-        td #{book_entries.url}
+        td
+          img(src='#{book_entries.url}', alt='#{book_entries.id}')
