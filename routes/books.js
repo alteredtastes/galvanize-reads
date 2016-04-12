@@ -7,4 +7,8 @@ function books() {
   return knex('Books');
 }
 
+router.get('/', function(req, res, next) {
+  res.render('books', {books: 'books!'});
+})
+
 module.exports = router;

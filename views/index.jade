@@ -4,6 +4,12 @@ block content
   .container
     .row
       .col-md-6
-        img#galvlogo(src='/images/altered-tastes-official-logo-v1-300x300.jpg', alt='galvlogo')
-
-    p Welcome to #{title}
+        a(href='/')
+          img#galvlogo(src='/images/galvanize-logo.svg', alt='galvlogo')
+    .row
+      .col-md-3
+        a(href='/books')
+          img#books.home-images(src='/images/books.png', alt='books')
+      .col-md-3
+        a(href='/authors')
+          img#authors.home-images(src='/images/authors.png', alt='authors')
