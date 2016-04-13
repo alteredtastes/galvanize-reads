@@ -5,10 +5,10 @@ block content
     table
       tr
         td
-          form(action='path', method='put')
-            input(type='button', value='edit')
-          form(action='path', method='delete')
-            input(type='button', value='remove')
+          form(action='/books/#{book_entry.id}/edit', method='get')
+            input(type='submit', value='edit')
+          form(action='/books/#{book_entry.id}/remove', method='get')
+            input(type='submit', value='remove')
       tr
         td #{book_entry.title}
       tr

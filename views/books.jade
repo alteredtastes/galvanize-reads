@@ -7,7 +7,7 @@ block content
         td
           form(action='/books/#{book_entries.id}/edit' method='get')
             input(type='submit', value='edit')
-          form(action='/books/#{book_entries.id}/delete' method='get')
+          form(action='/books/#{book_entries.id}/remove' method='get')
             input(type='submit', value='remove')
       tr
         td 

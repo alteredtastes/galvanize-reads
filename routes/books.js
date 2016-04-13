@@ -20,4 +20,8 @@ router.get('/:id/edit', function(req, res, next) {
   return res.render('index');
 });
 
+router.get('/:id/remove', function(req, res, next) {
+  return res.render('index');
+});
+
 module.exports = router;
