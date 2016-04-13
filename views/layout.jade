@@ -7,7 +7,13 @@ html
   body
     .container
       .row
-        .col-md-6
+        .col-md-2
           a(href='/')
             img#galvlogo(src='/images/galvanize-logo.svg', alt='galvlogo')
+        .col-md-1
+          form(action='/books/new' method='get')
+            input(type='submit' value='add book')
+        .col-md-1
+          form(action='/authors/new' method='get')
+            input(type='submit' value='add author')
       block content
