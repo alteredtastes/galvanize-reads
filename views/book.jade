@@ -4,11 +4,19 @@ block content
   for book_entry in title
     table
       tr
+        td
+          form(action='path', method='put')
+            input(type='button', value='edit')
+          form(action='path', method='delete')
+            input(type='button', value='remove')
+      tr
         td #{book_entry.title}
       tr
         td #{book_entry.genre}
       tr
         td #{book_entry.description}
       tr
-        td #{book_entry.url}
+        td
+          img(src='#{book_entry.url}', alt='#{book_entry.id}')
+          
         

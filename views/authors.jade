@@ -5,6 +5,12 @@ block content
       table
         tr
           td
+            form(action='path', method='put')
+              input(type='button', value='edit')
+            form(action='path', method='delete')
+              input(type='button', value='remove')
+        tr
+          td
            a(href='/authors/#{author_entries.id}/') #{author_entries.first} #{author_entries.last}
         tr
           td #{author_entries.bio}

@@ -4,6 +4,12 @@ block content
   for book_entries in titles
     table
       tr
+        td
+          form(action='/books/#{book_entries.id}/edit' method='get')
+            input(type='submit', value='edit')
+          form(action='/books/#{book_entries.id}/delete' method='get')
+            input(type='submit', value='remove')
+      tr
         td 
           a(href='/books/#{book_entries.id}') #{book_entries.title}
       tr
