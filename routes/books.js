@@ -16,6 +16,10 @@ router.get('/:id', function(req, res, next) {
   });
 })
 
+router.get('/new', function(req, res, next) {
+  return res.render('new-book');
+});
+
 router.get('/:id/edit', function(req, res, next) {
   return res.render('index');
 });

@@ -18,6 +18,10 @@ router.get('/:id', function(req, res, next) {
   });
 })
 
+router.get('/new', function(req, res, next) {
+  return res.render('new-author');
+});
+
 router.get('/:id/edit', function(req, res, next) {
   return res.render('index');
 });
