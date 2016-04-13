@@ -11,9 +11,9 @@ html
           a(href='/')
             img#galvlogo(src='/images/galvanize-logo.svg', alt='galvlogo')
         .col-md-1
-          form(action='/books/new-book' method='get')
-            input(type='submit' value='add book')
+          form(action='/books/new', method='link')
+            input(type='submit', value='add book')
         .col-md-1
-          form(action='/authors/new-author' method='get')
-            input(type='submit' value='add author')
+          form(action='/authors/new', method='link')
+            input(type='submit', value='add author')
       block content

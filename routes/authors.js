@@ -11,16 +11,16 @@ router.get('/', function(req, res, next) {
   });
 });
 
+router.get('/new', function(req, res, next) {
+  return res.render('new-author');
+});
+
 router.get('/:id', function(req, res, next) {
   return knex('authors').select('id', 'first', 'last', 'bio', 'url').where({id: req.params.id}).then(function(author_entry) {
       return res.render('author', {
         author: author_entry});
   });
 })
-
-router.get('/new', function(req, res, next) {
-  return res.render('new-author');
-});
 
 router.get('/:id/edit', function(req, res, next) {
   return res.render('index');

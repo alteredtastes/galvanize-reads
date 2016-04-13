@@ -5,8 +5,14 @@ const knex = require('../db/knex');
 
 router.get('/', function(req, res, next) {
   return knex('books').select('id', 'title', 'genre', 'description', 'url').then(function(book_entries) {
-      return res.render('books', {titles: book_entries});
+      return res.render('books',{
+        titles: book_entries
+      });
   });
+});
+
+router.get('/new', function(req, res, next) {
+  return res.render('new-book');
 });
 
 router.get('/:id', function(req, res, next) {
@@ -15,10 +21,6 @@ router.get('/:id', function(req, res, next) {
         title: book_entry});
   });
 })
-
-router.get('/new', function(req, res, next) {
-  return res.render('new-book');
-});
 
 router.get('/:id/edit', function(req, res, next) {
   return res.render('index');
