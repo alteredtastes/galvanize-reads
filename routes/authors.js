@@ -6,35 +6,35 @@ const queries = require('../db')
 
 router.get('/', function(req, res, next) {
   queries.getAuthors().then(function(author_entries) {
-    return res.render('authors', {
+    res.render('authors', {
       authors: author_entries
     });
   });
 });
 
 router.get('/new', function(req, res, next) {
-  return res.render('new-author');
+  res.render('new-author');
 });
 
 router.get('/:id', function(req, res, next) {
   queries.getAuthor({
     id: req.params.id
   }).then(function(author_entry) {
-    return res.render('author', {
+    res.render('author', {
       author: author_entry
     });
   });
 });
 
   router.get('/:id/edit', function(req, res, next) {
-    return res.render('index');
+    res.render('index');
   });
 
   router.get('/:id/remove', function(req, res, next) {
     queries.getAuthor({
       id: req.params.id
     }).then(function(author_entry) {
-      return res.render('delete-author', {
+      res.render('delete-author', {
         author: author_entry
       });
     });
@@ -82,7 +82,7 @@ module.exports = router;
 // }
 //
 // if(errors) {
-//   return res.render('new-author', {
+//   res.render('new-author', {
 //     errors: errors
 //   })
 // }

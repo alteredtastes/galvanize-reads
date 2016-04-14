@@ -6,7 +6,7 @@ const queries = require('../db')
 
 router.get('/', function(req, res, next) {
   queries.getBooks().then(function(book_entries) {
-    return res.render('books',{
+    res.render('books',{
       titles: book_entries
     });
   });
@@ -34,7 +34,7 @@ router.get('/:id/remove', function(req, res, next) {
   queries.getBook({
     id: req.params.id
   }).then(function(book_entry) {
-    return res.render('delete-book', {
+    res.render('delete-book', {
       title: book_entry
     });
   });
