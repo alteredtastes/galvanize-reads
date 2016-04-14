@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  for book_to_edit in title
+    p
+    p EDIT BOOK
+    p
+    form(action='/books/#{book_to_edit.id}?_method=PUT' method='post')
+      label(for=('title')) Title: 
+      p
+        input(type='text' id='title' name='title' value='#{book_to_edit.title}')
+      
+      label(for=('genre')) Genre: 
+      p
+        input(type='text' id='genre' name='genre' value='#{book_to_edit.genre}')
+      
+      label(for=('description')) Description: 
+      p
+        textarea(id='description' name='description') #{book_to_edit.description}
+      
+      label(for=('url')) URL:
+      p
+        input(type='text' id='url' name='url' value='#{book_to_edit.url}')
+      
+      p
+        input(type='submit' value='change book')

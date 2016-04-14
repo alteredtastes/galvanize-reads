@@ -4,4 +4,5 @@
 
 .home-images {
   max-width: 280px;
+  min-width: 280px;
 }

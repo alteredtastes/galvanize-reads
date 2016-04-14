@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  p #{errors}
+  p ADD AN AUTHOR
+  p
+  form(action='/authors' method='post')
+    label(for=('first')) First Name:
+    p
+      input(type='text' id='first' name='first' placeholder="Author's first name")
+    label(for=('last')) Last Name:
+    p
+      input(type='text' id='last' name='last' placeholder="Author's last name")
+    label(for=('bio')) Biography:
+    p
+      textarea(type='text' id='bio' name='bio' placeholder="Short bio")
+    label(for=('url')) URL:
+    p
+      input(type='text' id='url' name='url' placeholder='Portrait URL')
+    p
+      input(type='submit' value='add author')
