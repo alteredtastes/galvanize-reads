@@ -1,22 +1,21 @@
 extends layout
 
 block content
-  p
+  p #{errors}
   p ADD A BOOK
   p
   form(action='/books' method='post')
-      label(for=('title')) Title: 
-      p
-        input(type='text' id='title' placeholder='1984')
-      label(for=('genre')) Genre: 
-      p
-        input(type='text' id='genre' placeholder='Dystopian Novel')
-      label(for=('description')) Description: 
-      p
-        input(type='text' id='description' placeholder='Describe your book')
-      label(for=('url')) URL:
-      p
-        input(type='text' id='url' placeholder='Cover URL')
-      p
-        input(type='submit' value='add book')
-  
+    label(for=('title')) Title: 
+    p
+      input(type='text' id='title' name='title' placeholder='1984')
+    label(for=('genre')) Genre: 
+    p
+      input(type='text' id='genre' name='genre' placeholder='Dystopian Novel')
+    label(for=('description')) Description: 
+    p
+      input(type='text' id='description' name='description' placeholder='Describe your book')
+    label(for=('url')) URL:
+    p
+      input(type='text' id='url' name='url' placeholder='Cover URL')
+    p
+      input(type='submit' value='add book')
