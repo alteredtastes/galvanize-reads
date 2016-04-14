@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  for book_entry in title
+    table
+      tr
+        td
+          form(action='/books/#{book_entry.id}/edit', method='get')
+            input(type='submit', value='edit')
+      tr
+        td #{book_entry.title}
+      tr
+        td #{book_entry.genre}
+      tr
+        td #{book_entry.description}
+      tr
+        td
+          img(src='#{book_entry.url}', alt='#{book_entry.id}')
+      tr    
+        td
+          form(action='/books/#{book_entry.id}?_method=DELETE' method='post')
+            input(type='submit', value='remove #{book_entry.title}?')
+        

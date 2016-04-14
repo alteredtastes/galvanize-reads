@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  for author_entry in author
+    table
+      tr
+        td
+          form(action='/authors/#{author_entry.id}/edit', method='get')
+            input(type='submit', value='edit')
+      tr
+        td #{author_entry.first}
+      tr
+        td #{author_entry.last}
+      tr
+        td #{author_entry.bio}
+      tr
+        td
+          img(src='#{author_entry.url}', alt='#{author_entry.id}')
+      tr    
+        td
+          form(action='/authors/#{author_entry.id}?_method=DELETE' method='post')
+            input(type='submit', value='remove #{author_entry.first} #{author_entry.last}?')
+        
