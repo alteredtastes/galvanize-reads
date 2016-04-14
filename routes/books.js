@@ -32,8 +32,8 @@ router.get('/:id/edit', function(req, res, next) {
   }).then(function(book_to_edit) {
     res.render('edit-book', {
       title: book_to_edit
-    })
-  })
+    });
+  });
 });
 
 router.get('/:id/remove', function(req, res, next) {
@@ -58,7 +58,6 @@ router.post('/', function(req, res, next) {
 });
 
 router.put('/:id', function(req, res, next) {
-  console.log('this is about to redirect');
   queries.editBook({
     id: req.params.id
   },{
@@ -68,7 +67,7 @@ router.put('/:id', function(req, res, next) {
     url: req.body.url
   }).then(function() {
     res.redirect('/books/' + req.params.id);
-  })
+  });
 });
 
 router.delete('/:id', function(req, res, next) {

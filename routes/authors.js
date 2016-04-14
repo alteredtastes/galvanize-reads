@@ -26,19 +26,25 @@ router.get('/:id', function(req, res, next) {
   });
 });
 
-  router.get('/:id/edit', function(req, res, next) {
-    res.render('index');
-  });
-
-  router.get('/:id/remove', function(req, res, next) {
-    queries.getAuthor({
-      id: req.params.id
-    }).then(function(author_entry) {
-      res.render('delete-author', {
-        author: author_entry
-      });
+router.get('/:id/edit', function(req, res, next) {
+  queries.getAuthor({
+    id: req.params.id
+  }).then(function(author_to_edit) {
+    res.render('edit-author', {
+      author: author_to_edit
     });
   });
+});
+
+router.get('/:id/remove', function(req, res, next) {
+  queries.getAuthor({
+    id: req.params.id
+  }).then(function(author_entry) {
+    res.render('delete-author', {
+      author: author_entry
+    });
+  });
+});
 
 router.post('/', function(req, res, next) {
   queries.insertAuthor([{
@@ -49,6 +55,19 @@ router.post('/', function(req, res, next) {
   }]).then(function() {
     res.redirect('/authors');
     });
+});
+
+router.put('/:id', function(req, res, next) {
+  queries.editAuthor({
+    id: req.params.id
+  },{
+    first: req.body.first,
+    last: req.body.last,
+    bio: req.body.bio,
+    url: req.body.url
+  }).then(function() {
+    res.redirect('/authors/' + req.params.id);
+  });
 });
 
 router.delete('/:id', function(req, res, next) {

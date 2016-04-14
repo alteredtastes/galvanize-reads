@@ -1,21 +1,26 @@
 extends layout
 
 block content
-  p #{errors}
-  p ADD AN AUTHOR
-  p
-  form(action='/authors' method='post')
-    label(for=('first')) First Name:
+  for author_to_edit in author
     p
-      input(type='text' id='first' name='first' placeholder="Author's first name")
-    label(for=('last')) Last Name:
+    p EDIT AUTHOR
     p
-      input(type='text' id='last' name='last' placeholder="Author's last name")
-    label(for=('bio')) Biography:
-    p
-      textarea(type='text' id='bio' name='bio' placeholder="Short bio")
-    label(for=('url')) URL:
-    p
-      input(type='text' id='url' name='url' placeholder='Portrait URL')
-    p
-      input(type='submit' value='add author')
+    form(action='/authors/#{author_to_edit.id}?_method=PUT' method='post')
+      label(for=('first')) First: 
+      p
+        input(type='text' id='first' name='first' value='#{author_to_edit.first}')
+      
+      label(for=('last')) Last: 
+      p
+        input(type='text' id='last' name='last' value='#{author_to_edit.last}')
+      
+      label(for=('bio')) Bio: 
+      p
+        textarea(id='bio' name='bio') #{author_to_edit.bio}
+      
+      label(for=('url')) URL:
+      p
+        input(type='text' id='url' name='url' value='#{author_to_edit.url}')
+      
+      p
+        input(type='submit' value='change author')
