@@ -31,40 +31,37 @@ router.get('/:id/remove', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-  var errors = [];
+  // var errors = [];
+  //
+  // if(!(req.body.title && req.body.title.trim())) {
+  //   errors.push('Your book needs a title!');
+  // }
+  //
+  // if(!(req.body.genre && req.body.genre.trim())) {
+  //   errors.push('Your book needs a genre!');
+  // }
+  //
+  // if(!(req.body.description && req.body.description.trim())) {
+  //   errors.push('Your book needs a description!');
+  // }
+  //
+  // if(!(req.body.url && req.body.url.trim())) {
+  //   errors.push('Your book needs a cover!');
+  // }
+  //
+  // if(errors) {
+  //   res.render('new-book', {
+  //     errors: errors
+  //   })
+  // }
 
-  if(!(req.body.title && req.body.title.trim())) {
-    errors.push('Your book needs a title!');
-  }
-
-  if(!(req.body.genre && req.body.genre.trim())) {
-    errors.push('Your book needs a genre!');
-  }
-
-  if(!(req.body.description && req.body.description.trim())) {
-    errors.push('Your book needs a description!');
-  }
-
-  if(!(req.body.url && req.body.url.trim())) {
-    errors.push('Your book needs a cover!');
-  }
-
-  if(errors) {
-    return res.render('new-book', {
-      errors: errors
-    })
-  }
-
-  console.log(req.body.title);
-  console.log(req.body.genre);
-  console.log(req.body.description);
-  console.log(req.body.url);
-
-  // return knex('books').select('id', 'title', 'genre', 'description', 'url').then(function(book_entries) {
-      // return res.render('books',{
-      //   titles: book_entries
-      // });
-  // });
+  return knex('books').insert([
+    {title: req.body.title,
+    genre: req.body.genre,
+    description: req.body.description,
+    url: req.body.url}]).then(function() {
+      res.redirect('/books');
+  });
 });
 
 module.exports = router;
