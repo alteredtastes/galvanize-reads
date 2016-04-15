@@ -51,7 +51,19 @@ router.get('/:id/remove', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-  console.log(JSON.stringify(req.body.authors));
+  var intersectID;
+  var authorIDs = [];
+  var reqBodyAuthors = JSON.parse(JSON.stringify(req.body.authors));
+
+  if(typeof reqBodyAuthors === 'string') {
+    authorIDs.push(reqBodyAuthors);
+  } else {
+    authorIDs = reqBodyAuthors;
+  }
+  console.log(authorIDs);
+  for (id in authorIDs){
+    
+  }
 });
 
 router.post('/', function(req, res, next) {
