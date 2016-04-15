@@ -60,11 +60,25 @@ router.post('/', function(req, res, next) {
   } else {
     authorIDs = reqBodyAuthors;
   }
-  console.log(authorIDs);
-  for (id in authorIDs){
-    
-  }
-});
+    queries.insertBook([{
+      title: req.body.title,
+      genre: req.body.genre,
+      description: req.body.description,
+      url: req.body.url
+    }]).then(function(bookID) {
+      var promises = [];
+      for (authID in authorIDs) {
+        promises.push(
+        queries.insertRefs([{
+          authorID: parseInt(authID),
+          bookID: parseInt(bookID)
+        }]))
+      }
+      Promise.all(promises).then(function() {
+      res.redirect('/books');
+      });
+    });
+  });
 
 router.post('/', function(req, res, next) {
   queries.insertBook([{

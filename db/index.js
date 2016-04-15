@@ -9,3 +9,5 @@ exports.getAuthor = require('./getauthor');
 exports.insertAuthor = require('./insertauthor');
 exports.deleteAuthor = require('./deleteauthor');
 exports.editAuthor = require('./editauthor');
+
+exports.insertRefs = require('./insertRefs');

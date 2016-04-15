@@ -60,9 +60,9 @@ router.post('/', function(req, res, next) {
   } else {
     bookIDs = reqBodyBooks;
   }
-  console.log(bookIDs);
+
   for (id in bookIDs){
-    
+
   }
 });
 
