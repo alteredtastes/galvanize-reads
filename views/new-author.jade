@@ -20,7 +20,7 @@ block content
     p
       label(for=('select')) Books:
     p
-        select(name='books[]' multiple='multiple')
+        select(name='books' multiple='multiple')
           each book_refs in titles
             option(value='#{book_refs.id}') #{book_refs.title}
     p
