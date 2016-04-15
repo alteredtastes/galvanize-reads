@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 const knex = require('../db/knex');
-const queries = require('../db')
+const queries = require('../db');
 
 router.get('/', function(req, res, next) {
   queries.getBooks().then(function(book_entries) {
@@ -13,7 +13,11 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/new', function(req, res, next) {
-  res.render('new-book');
+  queries.getAuthors().then(function(author_refs) {
+    res.render('new-book', {
+      authors: author_refs
+    });
+  });
 });
 
 router.get('/:id', function(req, res, next) {
@@ -44,6 +48,10 @@ router.get('/:id/remove', function(req, res, next) {
       title: book_entry
     });
   });
+});
+
+router.post('/', function(req, res, next) {
+  console.log(JSON.stringify(req.body.authors));
 });
 
 router.post('/', function(req, res, next) {

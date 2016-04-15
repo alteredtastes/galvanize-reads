@@ -18,4 +18,10 @@ block content
     p
       input(type='text' id='url' name='url' placeholder='Cover URL')
     p
+      label(for=('select')) Authors:
+    p
+        select(name='authors' multiple='multiple')
+          each author_refs in authors
+            option(value='#{author_refs.id}') #{author_refs.first} #{author_refs.last}
+    p
       input(type='submit' value='add book')

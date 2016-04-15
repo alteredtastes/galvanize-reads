@@ -13,7 +13,11 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/new', function(req, res, next) {
-  res.render('new-author');
+  queries.getBooks().then(function(book_refs) {
+    res.render('new-author', {
+      titles: book_refs
+    });
+  });
 });
 
 router.get('/:id', function(req, res, next) {
@@ -44,6 +48,10 @@ router.get('/:id/remove', function(req, res, next) {
       author: author_entry
     });
   });
+});
+
+router.post('/', function(req, res, next) {
+  console.log(JSON.stringify(req.body.books));
 });
 
 router.post('/', function(req, res, next) {
