@@ -60,21 +60,24 @@ router.post('/', function(req, res, next) {
   } else {
     bookIDs = reqBodyBooks;
   }
-
-  for (id in bookIDs){
-
-  }
-});
-
-router.post('/', function(req, res, next) {
   queries.insertAuthor([{
     first: req.body.first,
     last: req.body.last,
     bio: req.body.bio,
     url: req.body.url
-  }]).then(function() {
+  }]).then(function(authID) {
+    var promises = [];
+    for (bookID in bookIDs) {
+      promises.push(
+      queries.insertRefs([{
+        bookID: parseInt(bookID),
+        authorID: parseInt(authID)
+      }]))
+    }
+    Promise.all(promises).then(function() {
     res.redirect('/authors');
     });
+  });
 });
 
 router.put('/:id', function(req, res, next) {

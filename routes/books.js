@@ -6,7 +6,7 @@ const queries = require('../db');
 
 router.get('/', function(req, res, next) {
   queries.getBooks().then(function(book_entries) {
-    res.render('books',{
+    res.render('books', {
       titles: book_entries
     });
   });
@@ -79,17 +79,6 @@ router.post('/', function(req, res, next) {
       });
     });
   });
-
-router.post('/', function(req, res, next) {
-  queries.insertBook([{
-    title: req.body.title,
-    genre: req.body.genre,
-    description: req.body.description,
-    url: req.body.url
-  }]).then(function() {
-    res.redirect('/books');
-    });
-});
 
 router.put('/:id', function(req, res, next) {
   queries.editBook({
