@@ -1,20 +1,21 @@
 extends layout
 
 block content
-  for author_entries in authors
-      table
-        tr
-          td
-            form(action='/authors/#{author_entries.id}/edit', method='get')
-              input(type='submit', value='edit')
-            form(action='/authors/#{author_entries.id}/remove', method='get')
-              input(type='submit', value='remove')
-        tr
-          td
-           a(href='/authors/#{author_entries.id}/') #{author_entries.first} #{author_entries.last}
-        tr
-          td #{author_entries.bio}
-        tr
-          td 
-            img.home-images(src='#{author_entries.url}', alt='#{author_entries.id}')
-          
+  p AUTHORS
+    for author_entries in authors
+        table
+          tr
+            td
+              form(action='/authors/#{author_entries.id}/edit', method='get')
+                input(type='submit', value='edit')
+              form(action='/authors/#{author_entries.id}/remove', method='get')
+                input(type='submit', value='remove')
+          tr
+            td
+             a(href='/authors/#{author_entries.id}/') #{author_entries.first} #{author_entries.last}
+          tr
+            td #{author_entries.bio}
+          tr
+            td 
+              img.home-images(src='#{author_entries.url}', alt='#{author_entries.id}')
+            

@@ -1,21 +1,22 @@
 extends layout
 
 block content
-  for book_entries in titles
-    table
-      tr
-        td
-          form(action='/books/#{book_entries.id}/edit' method='get')
-            input(type='submit', value='edit')
-          form(action='/books/#{book_entries.id}/remove' method='get')
-            input(type='submit', value='remove')
-      tr
-        td 
-          a(href='/books/#{book_entries.id}') #{book_entries.title}
-      tr
-        td #{book_entries.genre}
-      tr
-        td #{book_entries.description}
-      tr
-        td
-          img.home-images(src='#{book_entries.url}', alt='#{book_entries.id}')
+  p BOOKS
+    for book_entries in titles
+      table
+        tr
+          td
+            form(action='/books/#{book_entries.id}/edit' method='get')
+              input(type='submit', value='edit')
+            form(action='/books/#{book_entries.id}/remove' method='get')
+              input(type='submit', value='remove')
+        tr
+          td 
+            a(href='/books/#{book_entries.id}') #{book_entries.title}
+        tr
+          td #{book_entries.genre}
+        tr
+          td #{book_entries.description}
+        tr
+          td
+            img.home-images(src='#{book_entries.url}', alt='#{book_entries.id}')

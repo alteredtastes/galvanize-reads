@@ -51,7 +51,6 @@ router.get('/:id/remove', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-  var intersectID;
   var bookIDs = [];
   var reqBodyBooks;
 

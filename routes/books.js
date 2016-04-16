@@ -51,7 +51,6 @@ router.get('/:id/remove', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-  var intersectID;
   var authorIDs = [];
   var reqBodyAuthors;
 
@@ -73,8 +72,8 @@ router.post('/', function(req, res, next) {
       for (authID in authorIDs) {
         promises.push(
         queries.insertRefs([{
-          authorID: authID,
-          bookID: bookID
+          authorID: parseInt(authID),
+          bookID: parseInt(bookID)
         }]))
       }
       Promise.all(promises).then(function() {
