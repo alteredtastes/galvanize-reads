@@ -53,8 +53,11 @@ router.get('/:id/remove', function(req, res, next) {
 router.post('/', function(req, res, next) {
   var intersectID;
   var authorIDs = [];
-  var reqBodyAuthors = JSON.parse(JSON.stringify(req.body.authors));
+  var reqBodyAuthors;
 
+  if (req.body.authors) {
+    var reqBodyAuthors = JSON.parse(JSON.stringify(req.body.authors));
+  }
   if(typeof reqBodyAuthors === 'string') {
     authorIDs.push(reqBodyAuthors);
   } else {
@@ -70,8 +73,8 @@ router.post('/', function(req, res, next) {
       for (authID in authorIDs) {
         promises.push(
         queries.insertRefs([{
-          authorID: parseInt(authID),
-          bookID: parseInt(bookID)
+          authorID: authID,
+          bookID: bookID
         }]))
       }
       Promise.all(promises).then(function() {
