@@ -21,14 +21,20 @@ router.get('/new', function(req, res, next) {
 });
 
 router.get('/:id', function(req, res, next) {
-  queries.getBook({
-    id: req.params.id
-  }).then(function(book_entry) {
-    res.render('book', {
-      title: book_entry
-    });
-  });
-});
+  queries.getAuthIDsByBookID(req.params.id).then(function(authIDArray) {
+      console.log(authIDArray);
+    })
+  })
+
+// router.get('/:id', function(req, res, next) {
+//   queries.getBook({
+//     id: req.params.id
+//   }).then(function(book_entry) {
+//     res.render('book', {
+//       title: book_entry
+//     });
+//   });
+// });
 
 router.get('/:id/edit', function(req, res, next) {
   queries.getBook({
