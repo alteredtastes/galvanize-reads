@@ -1,22 +1,26 @@
 extends layout
 
 block content
-  for book_entry in title
-    table
+  table
+    tr
+      td
+        form(action='/books/#{id}/edit', method='get')
+          input(type='submit', value='edit')
+        form(action='/books/#{id}/remove', method='get')
+          input(type='submit', value='remove')
+    tr
+        td #{title}
+          p
+      for authObjs in authors
+        tr
+          td #{authObjs[0].first} #{authObjs[0].last}
+            br
+      tr
+        td #{genre}
+      tr
+        td #{description}
       tr
         td
-          form(action='/books/#{book_entry.id}/edit', method='get')
-            input(type='submit', value='edit')
-          form(action='/books/#{book_entry.id}/remove', method='get')
-            input(type='submit', value='remove')
-      tr
-        td #{book_entry.title}
-      tr
-        td #{book_entry.genre}
-      tr
-        td #{book_entry.description}
-      tr
-        td
-          img.home-images(src='#{book_entry.url}', alt='#{book_entry.id}')
+          img.home-images(src='#{url}', alt='#{title}')
           
         

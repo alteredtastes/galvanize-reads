@@ -21,25 +21,42 @@ router.get('/new', function(req, res, next) {
 });
 
 router.get('/:id', function(req, res, next) {
-  queries.getAuthIDsByBookID(req.params.id).then(function(authIDArray) {
-      console.log(authIDArray);
-    })
-  })
+  queries.getBook(req.params.id).then(function(bookObjs) {
+    console.log(bookObjs);
+    queries.getAuthIDsByBookID(bookObjs[0].id).then(function(authIDObjs) {
+      console.log(authIDObjs[0].author_id);
+      var authIDs = [];
+      for (var i = 0; i < authIDObjs.length; i++) {
+        authIDs.push(authIDObjs[i].author_id);
+      }
+      console.log(authIDs);
+      queries.getAuthsByIDs(authIDs).then(function(authObjs) {
+        console.log(authObjs);
+        res.render('book', {
+          id: bookObjs[0].id,
+          title: bookObjs[0].title,
+          genre: bookObjs[0].genre,
+          description: bookObjs[0].description,
+          url: bookObjs[0].url,
+          authors: authObjs
+        });
+      });
+    });
+  });
+});
 
 // router.get('/:id', function(req, res, next) {
 //   queries.getBook({
 //     id: req.params.id
-//   }).then(function(book_entry) {
+//   }).then(function(bookObjs) {
 //     res.render('book', {
-//       title: book_entry
+//       title: bookObjs
 //     });
 //   });
 // });
 
 router.get('/:id/edit', function(req, res, next) {
-  queries.getBook({
-    id: req.params.id
-  }).then(function(book_to_edit) {
+  queries.getBook(req.params.id).then(function(book_to_edit) {
     res.render('edit-book', {
       title: book_to_edit
     });
@@ -49,9 +66,9 @@ router.get('/:id/edit', function(req, res, next) {
 router.get('/:id/remove', function(req, res, next) {
   queries.getBook({
     id: req.params.id
-  }).then(function(book_entry) {
+  }).then(function(bookObjs) {
     res.render('delete-book', {
-      title: book_entry
+      title: bookObjs
     });
   });
 });
