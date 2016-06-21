@@ -22,16 +22,12 @@ router.get('/new', function(req, res, next) {
 
 router.get('/:id', function(req, res, next) {
   queries.getBook(req.params.id).then(function(bookObjs) {
-    console.log(bookObjs);
     queries.getAuthIDsByBookID(bookObjs[0].id).then(function(authIDObjs) {
-      console.log(authIDObjs[0].author_id);
       var authIDs = [];
       for (var i = 0; i < authIDObjs.length; i++) {
         authIDs.push(authIDObjs[i].author_id);
       }
-      console.log(authIDs);
       queries.getAuthsByIDs(authIDs).then(function(authObjs) {
-        console.log(authObjs);
         res.render('book', {
           id: bookObjs[0].id,
           title: bookObjs[0].title,
@@ -44,16 +40,6 @@ router.get('/:id', function(req, res, next) {
     });
   });
 });
-
-// router.get('/:id', function(req, res, next) {
-//   queries.getBook({
-//     id: req.params.id
-//   }).then(function(bookObjs) {
-//     res.render('book', {
-//       title: bookObjs
-//     });
-//   });
-// });
 
 router.get('/:id/edit', function(req, res, next) {
   queries.getBook(req.params.id).then(function(book_to_edit) {

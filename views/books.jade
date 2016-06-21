@@ -1,18 +1,20 @@
 extends layout
 
 block content
-  p BOOKS
+  p 
+    h3 BOOKS
     for book_entries in titles
       table
         tr
           td
             form(action='/books/#{book_entries.id}/edit' method='get')
-              input(type='submit', value='edit')
+              input(class='btn btn-sm' type='submit', value='edit')
             form(action='/books/#{book_entries.id}/remove' method='get')
-              input(type='submit', value='remove')
+              input(class='btn btn-sm' type='submit', value='remove')
         tr
           td 
-            a(href='/books/#{book_entries.id}') #{book_entries.title}
+            h4
+              a(href='/books/#{book_entries.id}') #{book_entries.title}
         tr
           td #{book_entries.genre}
         tr

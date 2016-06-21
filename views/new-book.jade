@@ -2,26 +2,27 @@ extends layout
 
 block content
   p #{errors}
-  p ADD A BOOK
+  p 
+    h4 ADD A BOOK
   p
-  form(action='/books' method='post')
+  form(class='form-group' action='/books' method='post')
     label(for=('title')) Title: 
     p
-      input(type='text' id='title' name='title' placeholder='1984')
+      input(class='form-control' type='text' id='title' name='title' placeholder='1984')
     label(for=('genre')) Genre: 
     p
-      input(type='text' id='genre' name='genre' placeholder='Dystopian Novel')
+      input(class='form-control' type='text' id='genre' name='genre' placeholder='Dystopian Novel')
     label(for=('description')) Description: 
     p
-      textarea(id='description' name='description' placeholder='Describe your book')
+      textarea(class='form-control' id='description' name='description' placeholder='Describe your book')
     label(for=('url')) URL:
     p
-      input(type='text' id='url' name='url' placeholder='Cover URL')
+      input(class='form-control' type='text' id='url' name='url' placeholder='Cover URL')
     p
       label(for=('select')) Authors:
     p
-        select(name='authors' multiple='multiple')
+        select(class='form-control' name='authors' multiple='multiple')
           each author_refs in authors
             option(value='#{author_refs.id}') #{author_refs.first} #{author_refs.last}
     p
-      input(type='submit' value='add book')
+      input(class='btn' type='submit' value='add book')

@@ -6,11 +6,12 @@ block content
       tr
         td
           form(action='/authors/#{author_entry.id}/edit', method='get')
-            input(type='submit', value='edit')
+            input(class='btn btn-sm' type='submit', value='edit')
           form(action='/authors/#{author_entry.id}/remove', method='get')
-            input(type='submit', value='remove')
+            input(class='btn btn-sm' type='submit', value='remove')
       tr
-        td #{author_entry.first} #{author_entry.last}
+        td 
+          h3 #{author_entry.first} #{author_entry.last}
       tr
         td #{author_entry.bio}
       tr

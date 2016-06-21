@@ -6,20 +6,20 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css', media='screen', title='no title', charset='utf-8')
   body
     .container
-      .row
+      .nav(class="navbar bg-warning")
         .col-md-2
           a(href='/')
             img#galvlogo(src='/images/galvanize-logo.svg', alt='galvlogo')
         .col-md-1
           form(action='/books/new', method='link')
-            input(type='submit', value='add book')
-        .col-md-1
+            input(class='btn btn-sm' type='submit', value='add book')
+        .col-md-2
           form(action='/authors/new', method='link')
-            input(type='submit', value='add author')
+            input(class='btn btn-sm' type='submit', value='add author')
         .col-md-1
           form(action='/books', method='link')
-            input(type='submit', value='show books')
-        .col-md-1
+            input(class='btn btn-sm btn-primary' type='submit', value='show books')
+        .col-md-2
           form(action='/authors', method='link')
-            input(type='submit', value='show authors')
+            input(class='btn btn-sm btn-primary' type='submit', value='show authors')
       block content

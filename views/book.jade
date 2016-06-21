@@ -5,18 +5,20 @@ block content
     tr
       td
         form(action='/books/#{id}/edit', method='get')
-          input(type='submit', value='edit')
+          input(class='btn btn-sm' type='submit', value='edit')
         form(action='/books/#{id}/remove', method='get')
-          input(type='submit', value='remove')
+          input(class='btn btn-sm' type='submit', value='remove')
     tr
-        td #{title}
+        td
+          h3 #{title}
           p
       for authObjs in authors
         tr
-          td #{authObjs[0].first} #{authObjs[0].last}
-            br
+          td 
+            h5 #{authObjs[0].first} #{authObjs[0].last}
       tr
-        td #{genre}
+        td
+          h5 #{genre}
       tr
         td #{description}
       tr

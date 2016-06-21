@@ -2,26 +2,27 @@ extends layout
 
 block content
   p #{errors}
-  p ADD AN AUTHOR
+  p 
+    h4 ADD AN AUTHOR
   p
-  form(action='/authors' method='post')
+  form(class='form-group' action='/authors' method='post')
     label(for=('first')) First Name:
     p
-      input(type='text' id='first' name='first' placeholder="Author's first name")
+      input(class='form-control' type='text' id='first' name='first' placeholder="Author's first name")
     label(for=('last')) Last Name:
     p
-      input(type='text' id='last' name='last' placeholder="Author's last name")
+      input(class='form-control' type='text' id='last' name='last' placeholder="Author's last name")
     label(for=('bio')) Biography:
     p
-      textarea(type='text' id='bio' name='bio' placeholder="Short bio")
+      textarea(class='form-control' type='text' id='bio' name='bio' placeholder="Short bio")
     label(for=('url')) URL:
     p
-      input(type='text' id='url' name='url' placeholder='Portrait URL')
+      input(class='form-control' type='text' id='url' name='url' placeholder='Portrait URL')
     p
       label(for=('select')) Books:
     p
-        select(name='books' multiple='multiple')
+        select(class='form-control' name='books' multiple='multiple')
           each book_refs in titles
             option(value='#{book_refs.id}') #{book_refs.title}
     p
-      input(type='submit' value='add author')
+      input(class='btn' type='submit' value='add author')

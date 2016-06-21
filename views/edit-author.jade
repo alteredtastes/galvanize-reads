@@ -5,22 +5,22 @@ block content
     p
     p EDIT AUTHOR
     p
-    form(action='/authors/#{author_to_edit.id}?_method=PUT' method='post')
+    form(class='form-group' action='/authors/#{author_to_edit.id}?_method=PUT' method='post')
       label(for=('first')) First: 
       p
-        input(type='text' id='first' name='first' value='#{author_to_edit.first}')
+        input(class='form-control' type='text' id='first' name='first' value='#{author_to_edit.first}')
       
       label(for=('last')) Last: 
       p
-        input(type='text' id='last' name='last' value='#{author_to_edit.last}')
+        input(class='form-control' type='text' id='last' name='last' value='#{author_to_edit.last}')
       
       label(for=('bio')) Bio: 
       p
-        textarea(id='bio' name='bio') #{author_to_edit.bio}
+        textarea(class='form-control' id='bio' name='bio') #{author_to_edit.bio}
       
       label(for=('url')) URL:
       p
-        input(type='text' id='url' name='url' value='#{author_to_edit.url}')
+        input(class='form-control' type='text' id='url' name='url' value='#{author_to_edit.url}')
       
       p
-        input(type='submit' value='change author')
+        input(class='btn' type='submit' value='change author')
