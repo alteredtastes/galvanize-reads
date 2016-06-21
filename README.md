@@ -1,2 +1,2 @@
 # galvanize-reads
-crud inventory system using express, jade, and postgres.
+CRUD inventory system using Express, Jade, and PostgreSQL.
