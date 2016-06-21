@@ -1,1 +1,1 @@
-CRUD app with Express, Jade, and PostgreSQL.
+CRUD inventory system using Express, Jade, and PostgreSQL.
