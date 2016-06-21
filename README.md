@@ -1,1 +1,1 @@
-CRUD Express app with Jade views.
+CRUD app with Express, Jade, and PostgreSQL.
